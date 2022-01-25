@@ -1,0 +1,120 @@
+        body {
+            background-color: #d57276; /* For browsers that do not support gradients */
+            background-image: linear-gradient(to right, #d57276 , #d6c2bc, #65b2c6);
+        }
+
+        .header {
+            color: #000000;
+            font-size: 100px;
+            margin-top: 20px;
+            font-family: Times, "Times New Roman", Times;
+        }
+
+        .general {
+            border-radius: 4px;
+            height: 30px;
+            
+        }
+        .alert {
+            width: 600px;
+            margin-left: 80px;
+            margin-top: 60px;
+            padding: 20px;
+            background-color: #3a3939; /* Red */
+            color: white;
+        }
+        
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .closebtn:hover {
+            color: grey;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #f5f5f5;
+            background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
+            background-image: -moz-linear-gradient(top,#f5f5f5,#f1f1f1);
+            background-image: -ms-linear-gradient(top,#f5f5f5,#f1f1f1);
+            background-image: -o-linear-gradient(top,#f5f5f5,#f1f1f1);
+            background-image: linear-gradient(top,#f5f5f5,#f1f1f1);
+            color: #444;
+            
+            border: 1px solid #dcdcdc;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            
+            cursor: default;
+            font-size: 11px;
+            font-weight: bold;
+            text-align: center;
+            height: 27px;
+            line-height: 27px;
+            width: 90px;
+            padding: 0 8px;
+            text-decoration: none;
+
+            cursor:pointer;
+        }
+        
+        .button:hover {
+            background-color: #F8F8F8;
+            background-image: -webkit-linear-gradient(top,#f8f8f8,#f1f1f1);
+            background-image: -moz-linear-gradient(top,#f8f8f8,#f1f1f1);
+            background-image: -ms-linear-gradient(top,#f8f8f8,#f1f1f1);
+            background-image: -o-linear-gradient(top,#f8f8f8,#f1f1f1);
+            background-image: linear-gradient(top,#f8f8f8,#f1f1f1);
+            
+            border: 1px solid #C6C6C6;
+            color: #333;
+            
+            -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,.1);
+            -moz-box-shadow: 0px 1px 1px rgba(0,0,0,.1);
+            box-shadow: 0px 1px 1px rgba(0,0,0,.1);
+        }
+
+        .plot{
+            width: 200px;
+            height: 200px;
+        }
+
+        .sitelist{
+            text-decoration: none;
+            list-style: none;
+            float: left;
+            margin-left: 50px;
+            text-align: center;
+            justify-content: space-between;
+        }
+
+        .buttontitle{
+            color: #133954;
+            size: 12px;
+        }
+
+        .addingSiteDiv{ 
+            background-color: rgb(207, 207, 207);
+            margin-left: 25%;
+            width: 1000px;
+            height:900px;
+            box-shadow: 0 5px 50px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 #5d5d5d30;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .addingSiteUl{
+            text-decoration: none;
+            list-style: none;
+            margin-right: 40px;
+        }

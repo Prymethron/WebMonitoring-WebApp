@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
+</head>
+
+<div class="addingSiteDiv">
+            <a href="/home" class=header style="text-align: center; text-decoration: none;">Web Monitoring</a>  
+    <form action="/add" method="POST">
+        <ul>
+            <li class="addingSiteUl">
+                <p>Site Name:</p>
+                <input style="width: 250px; align-items: center" type="text"
+                    placeholder="www.xyz.com" name="adding" class=general>
+            </li>
+            <li class="addingSiteUl">
+                <p>Site Image URL:</p>
+                <input style="width: 250px; align-items: center" type="text"
+                    name="addingImage" class=general>
+            </li>
+            <br>
+            <li class="addingSiteUl">
+                <input style="width: 100px;" type="submit" name="addingbutton"
+                    value="Add" class=general id="addbutton">
+            </li>
+        </ul>
+
+    </form>
+</div>

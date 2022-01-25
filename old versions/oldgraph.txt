@@ -1,0 +1,64 @@
+var options = {
+    height: 500,
+    width: 800,
+    title: chart_title,
+    legend: { position: 'none' },
+    colors: [getRandomColor_Black()],
+    animation: {
+        duration: 1000,
+        easing: 'in'
+      },
+    backgroundColor: { stroke: '#dee8ec', strokeWidth: 10 },
+    chartArea: {
+        left: 50,
+        right: 50,
+        top: 60,
+        bottom: 50,
+    },
+    hAxis: {
+        ticks: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+        viewWindow: {
+            min: 0,
+            max: 12
+        }
+    }
+};
+
+google.charts.load("current", { packages: ["corechart"] });
+google.charts.setOnLoadCallback(drawChart);
+
+dataArray = [[{ label: 'status code' }, { label: 'Time Of Day' }]]
+for (let i = 0; ; i++) {
+    dataArray.push(["Status code : " + xValues[i].toString() + " Elapsed Time : " + yValues[i].toString(), parseInt(zValues[i].split(":")[0])]);
+    if (xValues[i + 1] == null) {
+        break;
+    }
+}
+
+function drawChart() {
+    prevButton.disabled = true;
+    nextButton.disabled = true;
+
+    data = google.visualization.arrayToDataTable(dataArray);
+    chart = new google.visualization.Histogram(document.getElementById('Chart'));
+    
+    google.visualization.events.addListener(chart, 'ready',
+        function () {
+            prevButton.disabled = options.hAxis.viewWindow.min <= 0;
+            nextButton.disabled = options.hAxis.viewWindow.max >= MAX;
+        });
+
+    chart.draw(data, options);
+}
+
+prevButton.onclick = function () {
+    options.hAxis.viewWindow.min -= 4;
+    options.hAxis.viewWindow.max -= 4;
+    drawChart();
+}
+
+nextButton.onclick = function () {
+    options.hAxis.viewWindow.min += 4;
+    options.hAxis.viewWindow.max += 4;
+    drawChart();
+}

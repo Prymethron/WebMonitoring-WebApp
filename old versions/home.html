@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Monitoring</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
+</head>
+
+<body>
+    <p class=header>Web Monitoring</p>
+
+    <select onchange="selected()" class=sites name="site" id="site">
+        {%for i in range(len)%}
+        <option value="{{data[i][0]}}" data-number="{{i}}">{{i}}</option>
+        {%endfor%}
+    </select>
+
+    <form id="addform" action="/plot" method="POST">
+        <input style="width: 250px; position:relative; left:199px;" type="text" value="" id="d" readonly class=general>
+        <input style="width: 250px; position:relative; left:199px;" type="hidden" value="" id="plot_text"
+            name="plot_str">
+        <input style="width: 100px; position:relative; left: 230px;" type="submit" name="plottingbutton" value="Plot"
+            class="general"></input>
+        <div id="Chart" value="{{plot_title}}"
+            style="width:100%;max-width:900px;position:fixed; left: 900px; top:280px;"></div>
+        <input type="hidden" id="eltime" value="{{eltime}}"></input>
+        <input type="hidden" style="position:relative; top: 230px;" id="statuscode" value="{{statuscode}}"></input>
+        <input type="hidden" id="currenttime" value="{{currenttime}}"></input>
+    </form>
+
+
+    <form action="/add" method="POST">
+        <input style="width: 250px; position:relative; left: 199px; top:20px;" type="text" placeholder="www.xyz.com"
+            name="adding" class=general>
+        <input style="width: 100px; position:relative; left: 230px; top:20px;" type="submit" name="addingbutton"
+            value="Add" class=general id="addbutton">
+    </form>
+
+    <form action="/delete" method="POST">
+        <input style="width: 250px; position:relative; left:199px; top:40px;" type="hidden" value="" name="delete"
+            id="del">
+        <input style="width: 100px; position:relative; left: 630px; top:-42px;" type="submit" name="deletingbutton"
+            value="Delete" class=general>
+    </form>
+
+    {% for message in get_flashed_messages() %}
+    <div class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        {{message}}
+    </div>
+    {% endfor %}
+
+    <button type="button" class="button" id='b1' style="position:fixed; left: 1560px; top:800px;">Previous</button>
+    <button type="button" class="button" id='b2' style="position:fixed; left: 1640px; top:800px;">Next</button>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{{ url_for('static',filename='script.js') }}"></script>
+
+</body>

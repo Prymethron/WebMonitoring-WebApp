@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html style="height: 1000px;">
+
+<head>
+    <link rel="icon" href="file:///C:/Users/minik/Desktop/Okul/3.Sinif/System-Programming/WebMonitoringSql/images/favicon.ico">
+    <title>WEB MONITORING</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
+</head>
+
+<body>
+        <p class=header style="text-align: center;"><a class=header href="/home" style="text-decoration: none">WEB MONITORING</a></p>
+
+    <div id="sitelist_div" style="margin-top: -70px;">
+        <form id="addform" action="/plot" method="POST">
+            {%for i in range(len)%}
+            <ul>
+                <li class="sitelist">
+                    <span class="closebtn" name="delete" onclick="sendDeleteRequest(this.parentElement);">&times;</span>
+                    <a>
+                        <button style="cursor:pointer;" type="submit" class="plot" value="{{data[i][0]}}"
+                            onclick="plot('{{i}}')" id="plotbutton{{i}}">
+                            <img src="{{imgurl[i][0]}}" height=150px width=150px align="center" />
+                            <h3 class="buttontitle">{{splitted[i]}}</h3>
+                            <br></br>
+                        </button>
+                    </a>
+                </li>
+                {%endfor%}
+                <input style="width: 250px; position:relative; left:199px;" type="hidden" value="" id="plot_text"
+                    name="plot_str">
+                <input type="hidden" id="eltime" value="{{eltime}}"></input>
+                <input type="hidden" id="statuscode" value="{{statuscode}}"></input>
+                <input type="hidden" id="currenttime" value="{{currenttime}}"></input>
+        </form>
+        <form id="formDelete" action="/delete" method="POST">
+            <input type="hidden" value="" name="delete" id="del">
+        </form>
+
+        <form action="/adding" method="GET">
+            <li class="sitelist">
+                <a>
+                    <button style="cursor:pointer;" type="submit" class="plot" value="" id="addsitebutton">
+                        <img src="https://cdn.pixabay.com/photo/2016/12/21/17/11/signe-1923369_960_720.png" height=150px
+                            width=150px align="center" />
+                        <h3 class="buttontitle">Add Site</h3>
+                        <br></br>
+                    </button>
+                </a>
+            </li>
+            </ul>
+        </form>
+    </div>
+
+    <div>
+        <div id="Chart" value="{{plot_title}}"
+            style="width:100%;max-width:900px;position:relative; left:520px; top:270px"></div>
+        <button type="button" class="button" id='b1'
+            style="position:relative; top:-210px; left:400px; display:none;">Previous</button>
+        <button type="button" class="button" id='b2'
+            style="position:relative; top:-180px; left:400px; display:none;">Next</button>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="{{ url_for('static',filename='script.js') }}"></script>
+
+</body>
